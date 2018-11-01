@@ -1,0 +1,8 @@
+(library 
+  (libraries core unix)
+  (name lsplib))
+(env
+  (dev
+    (flags (:standard -warn-error -A))))
+
+
