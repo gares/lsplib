@@ -40,6 +40,8 @@
  *   entirely.
 *)
 
+module SMap = Map.Make(String)
+
 type lsp_id =
   | NumberId of int
   | StringId of string
@@ -1024,4 +1026,4 @@ module IdKey = struct
 end
 
 module IdSet = Set.Make (IdKey)
-module IdMap = MyMap.Make (IdKey)
+module IdMap = Map.Make (IdKey)

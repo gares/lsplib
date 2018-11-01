@@ -35,7 +35,7 @@ Caveats:
  (+) Numbers are just stored as strings
  *)
 
-module List = Core_list
+module List = Core.List
 
 type json =
   | JSON_Object of (string * json) list
@@ -787,4 +787,4 @@ end
 
 module JSet = Set.Make (JsonKey)
 
-module JMap = MyMap.Make (JsonKey)
+module JMap = Map.Make (JsonKey)

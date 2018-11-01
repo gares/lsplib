@@ -191,4 +191,4 @@ module JsonKey : Set.OrderedType with type t = json
 
 module JSet : Set.S with type elt = json
 
-module JMap : MyMap.S with type key = json
+module JMap : Map.S with type key = json

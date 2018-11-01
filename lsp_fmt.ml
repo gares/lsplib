@@ -7,10 +7,15 @@
  *
 *)
 
-open Hh_core
+(* open Hh_core *)
 open Lsp
 open Hh_json
 open Hh_json_helpers
+module List = Core.List
+module SMap = struct
+  include Map.Make(String)
+  let elements = bindings
+end
 
 
 (************************************************************************)
@@ -949,7 +954,7 @@ let error_of_exn (e: exn) : Lsp.Error.t =
   | Error.ServerNotInitialized message -> {code= -32002; message; data=None;}
   | Error.Unknown message -> {code= -32001; message; data=None;}
   | Error.RequestCancelled message -> {code= -32800; message; data=None;}
-  | Exit_status.Exit_with code -> {code= -32001; message=Exit_status.to_string code; data=None;}
+(*   | Exit_status.Exit_with code -> {code= -32001; message=Exit_status.to_string code; data=None;} *)
   | _ -> {code= -32001; message=Printexc.to_string e; data=None;}
 
 let print_error (e: Error.t) (stack: string) : json =

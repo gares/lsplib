@@ -8,6 +8,8 @@
  **)
 
 open Hh_json
+module Option = Core.Option
+module Core_list = Core.List
 
 (************************************************************************)
 (** Helpers for parsing & printing                                     **)
@@ -117,7 +119,7 @@ module AdhocJsonHelpers = struct
 
   let try_get_val key json =
     let obj = Hh_json.get_object_exn json in
-    Core_list.Assoc.find obj key
+    Core_list.Assoc.find obj key ~equal:String.equal
 
   let get_string_val key ?default json =
     let v = try_get_val key json in
